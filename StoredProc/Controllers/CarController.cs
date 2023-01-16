@@ -39,7 +39,7 @@ namespace StoredProc.Controllers
             public IEnumerable<Car> SearchResult()
             {
                 var result = _context.Car
-                    .FromSqlRaw<Car>("dbo.spSearchCars")
+                    .FromSqlRaw<Car>("dbo.spCarsTables")
                     .ToList();
 
                 return result;
