@@ -55,7 +55,7 @@ namespace StoredProc.Controllers
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
-                    cmd.CommandText = "dbo.spSearchCars";
+                    cmd.CommandText = "dbo.spCarsTables";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     con.Open();
                     SqlDataReader sdr = cmd.ExecuteReader();
@@ -84,7 +84,7 @@ namespace StoredProc.Controllers
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
-                    cmd.CommandText = "dbo.spSearchCars";
+                    cmd.CommandText = "dbo.spCarsTables";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     if (Brand != null)
                     {
@@ -131,7 +131,7 @@ namespace StoredProc.Controllers
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
-                    cmd.CommandText = "dbo.spSearchCarsGoodDynamicSQL";
+                    cmd.CommandText = "dbo.spCarsTables";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     con.Open();
                     SqlDataReader sdr = cmd.ExecuteReader();
@@ -158,7 +158,7 @@ namespace StoredProc.Controllers
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
-                    cmd.CommandText = "dbo.spSearchCarsGoodDynamicSQL";
+                    cmd.CommandText = "dbo.spCarsTables";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     if (Brand != null)
                     {
@@ -205,7 +205,7 @@ namespace StoredProc.Controllers
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
-                    cmd.CommandText = "dbo.spSearchCarsGoodDynamicSQL";
+                    cmd.CommandText = "dbo.spCarsTables";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     con.Open();
                     SqlDataReader sdr = cmd.ExecuteReader();
@@ -232,7 +232,7 @@ namespace StoredProc.Controllers
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
-                    cmd.CommandText = "dbo.spSearchCarsGoodDynamicSQL";
+                    cmd.CommandText = "dbo.spCarsTables";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     if (Brand != null)
                     {
