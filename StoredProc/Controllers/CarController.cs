@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using StoredProc.Data;
 using StoredProc.Models;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -74,7 +76,7 @@ namespace StoredProc.Controllers
 
             /// <returns></returns>
             [HttpPost]
-            public IActionResult DynamicSQL(string ModelName, string FuelType, string Transmission, int NumberOfWheeles)
+            public IActionResult DynamicSQL(string Brand, string Type, string Color, int Price)
             {
                 string connectionStr = _config.GetConnectionString("DefaultConnection");
 
@@ -84,25 +86,25 @@ namespace StoredProc.Controllers
                     cmd.Connection = con;
                     cmd.CommandText = "dbo.spSearchCars";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    if (ModelName != null)
+                    if (Brand != null)
                     {
-                        SqlParameter param_fn = new SqlParameter("@ModelName", ModelName);
-                        cmd.Parameters.Add(param_fn);
+                        SqlParameter param = new SqlParameter("@Brand", Brand);
+                        cmd.Parameters.Add(param);
                     }
-                    if (FuelType != null)
+                    if (Type != null)
                     {
-                        SqlParameter param_ln = new SqlParameter("@FuelType", FuelType);
-                        cmd.Parameters.Add(param_ln);
+                        SqlParameter param = new SqlParameter("@Type", Type);
+                        cmd.Parameters.Add(param);
                     }
-                    if (Transmission != null)
+                    if (Color != null)
                     {
-                        SqlParameter param_g = new SqlParameter("@Transmission", Transmission);
-                        cmd.Parameters.Add(param_g);
+                        SqlParameter param = new SqlParameter("@Color", Color);
+                        cmd.Parameters.Add(param);
                     }
-                    if (NumberOfWheeles != 0)
+                    if (Price != 0)
                     {
-                        SqlParameter param_s = new SqlParameter("@NumberOfWheeles", NumberOfWheeles);
-                        cmd.Parameters.Add(param_s);
+                        SqlParameter param = new SqlParameter("@Price", Price);
+                        cmd.Parameters.Add(param);
                     }
                     con.Open();
                     SqlDataReader sdr = cmd.ExecuteReader();
@@ -148,7 +150,7 @@ namespace StoredProc.Controllers
             }
 
             [HttpPost]
-            public IActionResult SearchWithDynamics(string ModelName, string FuelType, string Transmission, int NumberOfWheeles)
+            public IActionResult SearchWithDynamics(string Brand, string Type, string Color, int Price)
             {
                 string connectionStr = _config.GetConnectionString("DefaultConnection");
 
@@ -158,32 +160,25 @@ namespace StoredProc.Controllers
                     cmd.Connection = con;
                     cmd.CommandText = "dbo.spSearchCarsGoodDynamicSQL";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    StringBuilder stringBuilder = new StringBuilder("Select * from Employees where 1 = 1");
-
-                    if (ModelName != null)
+                    if (Brand != null)
                     {
-                        stringBuilder.Append(" AND ModelName=@ModelName");
-                        SqlParameter param_fn = new SqlParameter("@ModelName", ModelName);
-                        cmd.Parameters.Add(param_fn);
+                        SqlParameter param = new SqlParameter("@Brand", Brand);
+                        cmd.Parameters.Add(param);
                     }
-                    if (FuelType != null)
+                    if (Type != null)
                     {
-                        stringBuilder.Append(" AND FuelType=@FuelType");
-                        SqlParameter param_ln = new SqlParameter("@FuelType", FuelType);
-                        cmd.Parameters.Add(param_ln);
+                        SqlParameter param = new SqlParameter("@Type", Type);
+                        cmd.Parameters.Add(param);
                     }
-                    if (Transmission != null)
+                    if (Color != null)
                     {
-                        stringBuilder.Append(" AND Transmission=@Transmission");
-                        SqlParameter param_g = new SqlParameter("@Transmission", Transmission);
-                        cmd.Parameters.Add(param_g);
+                        SqlParameter param = new SqlParameter("@Color", Color);
+                        cmd.Parameters.Add(param);
                     }
-                    if (NumberOfWheeles != 0)
+                    if (Price != 0)
                     {
-                        stringBuilder.Append(" AND NumberOfWheeles=@NumberOfWheeles");
-                        SqlParameter param_s = new SqlParameter("@NumberOfWheeles", NumberOfWheeles);
-                        cmd.Parameters.Add(param_s);
+                        SqlParameter param = new SqlParameter("@Price", Price);
+                        cmd.Parameters.Add(param);
                     }
                     con.Open();
                     SqlDataReader sdr = cmd.ExecuteReader();
@@ -229,7 +224,7 @@ namespace StoredProc.Controllers
             }
 
             [HttpPost]
-            public IActionResult DynamicSQLInStoredProcedure(string ModelName, string FuelType, string Transmission, int NumberOfWheeles)
+            public IActionResult DynamicSQLInStoredProcedure(string Brand, string Type, string Color, int Price)
             {
                 string connectionStr = _config.GetConnectionString("DefaultConnection");
 
@@ -239,24 +234,24 @@ namespace StoredProc.Controllers
                     cmd.Connection = con;
                     cmd.CommandText = "dbo.spSearchCarsGoodDynamicSQL";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    if (ModelName != null)
+                    if (Brand != null)
                     {
-                        SqlParameter param = new SqlParameter("@ModelName", ModelName);
+                        SqlParameter param = new SqlParameter("@Brand", Brand);
                         cmd.Parameters.Add(param);
                     }
-                    if (FuelType != null)
+                    if (Type != null)
                     {
-                        SqlParameter param = new SqlParameter("@FuelType", FuelType);
+                        SqlParameter param = new SqlParameter("@Type", Type);
                         cmd.Parameters.Add(param);
                     }
-                    if (Transmission != null)
+                    if (Color != null)
                     {
-                        SqlParameter param = new SqlParameter("@Transmission", Transmission);
+                        SqlParameter param = new SqlParameter("@Color", Color);
                         cmd.Parameters.Add(param);
                     }
-                    if (NumberOfWheeles != 0)
+                    if (Price != 0)
                     {
-                        SqlParameter param = new SqlParameter("@NumberOfWheeles", NumberOfWheeles);
+                        SqlParameter param = new SqlParameter("@Price", Price);
                         cmd.Parameters.Add(param);
                     }
                     con.Open();

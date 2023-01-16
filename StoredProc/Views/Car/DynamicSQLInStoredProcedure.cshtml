@@ -1,0 +1,57 @@
+﻿<body style="padding-top: 10px">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="panel-heading">
+            <h3>Employee Search Form</h3>
+        </div>
+        <form asp-controller="Car" asp-action="DynamicSQLInStoredProcedure">
+            <div>
+                <label for="Brand">Brand</label>
+                <br />
+                <input type="text" name="Brand" placeholder="Brand" />
+            </div>
+            <br />
+            <div>
+                <label for="Type">Type</label>
+                <br />
+                <input type="text" name="Type" placeholder="Type" />
+            </div>
+            <br />
+            <div>
+                <label for="Color">Color</label>
+                <br />
+                <select name="Color">
+                    <option value="red">Red</option>
+                    <option value="yellow">Yellow</option>
+                </select>
+            </div>
+            <br />
+            <div>
+                <label for="Price">DynamicSQLInStoredProcedure</label>
+                <br />
+                <input type="number" name="DynamicSQInStoredProcedure" placeholder="DynamicSQInStoredProcedure" />
+            </div>
+            <br />
+            <input type="submit" value="DynamicSQInStoredProcedure" />
+        </form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Price</th>
+                </tr>
+            <tbody>
+                    @foreach (var car in Model)
+                    {
+                    <tr>
+                        <td>@car.Brand</td>
+                        <td>@car.Type</td>
+                        <td>@car.Color</td>
+                        <td>@car.Price</td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</body>
