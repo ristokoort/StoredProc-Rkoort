@@ -14,12 +14,12 @@ namespace StoredProc.Controllers
 {
     public class CarController : Controller
     {
-        public class CarsController : Controller
-        {
+       
+        
             private readonly StoredProcDbContext _context;
             public IConfiguration _config { get; }
 
-            public CarsController
+            public CarController
                 (
                 StoredProcDbContext context,
                 IConfiguration config
@@ -272,4 +272,4 @@ namespace StoredProc.Controllers
         }
     }
 
-}
+
